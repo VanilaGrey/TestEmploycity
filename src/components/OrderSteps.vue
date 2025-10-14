@@ -1,3 +1,4 @@
+
 <!-- <template>
   <section class="steps">
     <h2 class="steps__title">ОФОРМЛЕНИЕ <span>ЗАКАЗА</span></h2>
@@ -58,3 +59,4 @@ const steps = [
 	}
 }
 </style> -->
+

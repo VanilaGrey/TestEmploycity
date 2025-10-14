@@ -1,5 +1,5 @@
 <script setup>
-import Preview from '@/components/Preview.vue';
+import PreviewBlock from '@/components/PreviewBlock.vue';
 import OrderSteps from '@/components/OrderSteps.vue';
 import OrderForm from '@/components/OrderForm.vue';
 </script>
@@ -7,7 +7,7 @@ import OrderForm from '@/components/OrderForm.vue';
 <template>
 	<main class="main">
 		<div class="main__preview">
-			<Preview />
+			<PreviewBlock />
 		</div>
 		<OrderSteps />
 		<OrderForm />
@@ -16,9 +16,9 @@ import OrderForm from '@/components/OrderForm.vue';
 
 <style scoped lang="scss">
 .main {
-	background-image: url('/images/background-1.jpg'); // Твоя фоновая картинка
-	background-repeat: no-repeat;
-	background-position: center;
+	background-image: url("/images/background-1.jpg"); // Твоя фоновая картинка
 	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 </style>
