@@ -1,8 +1,41 @@
+html {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.4;
+	font-family: 'Lato', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	-webkit-tap-highlight-color: transparent;
+}
+
 body {
 	margin: 0;
+
+	--icon-add-file: url('../icons/icon-addFile.svg');
+	--icon-file: url('../icons/icon-file.svg');
+	--icon-mail: url('../icons/icon-mail.svg');
+	--icon-message: url('../icons/icon-message.svg');
+	--icon-money: url('../icons/icon-money.svg');
+	--icon-percent: url('../icons/icon-percent.svg');
+	--icon-qiwi: url('../icons/icon-qiwi.svg');
+	--icon-search: url('../icons/icon-search.svg');
+	--icon-vk: url('../icons/icon-vk.svg');
+	--icon-web-money: url('../icons/icon-webMoney.svg');
+	--icon-yandex-money: url('../icons/icon-yandexMoney.svg');
 }
 
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+.container {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 1212px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 20px;
+	padding-left: 20px;
 }

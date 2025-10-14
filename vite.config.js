@@ -16,7 +16,10 @@ export default defineConfig({
 	css: {
 		preprocessorOptions: {
 			scss: {
-				additionalData: '@use "@/assets/scss/env" as *;',
+				additionalData: `
+					@use "@/assets/scss/env" as *;
+					@use "@/assets/scss/media" as *;
+				`,
 			},
 		},
 	},
