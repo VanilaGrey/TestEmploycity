@@ -12,7 +12,7 @@ if (isDev) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: '',
+	base: '/TestEmploycity/',
 	css: {
 		preprocessorOptions: {
 			scss: {

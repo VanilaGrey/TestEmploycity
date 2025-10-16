@@ -27,14 +27,10 @@ function handleMoreClick() {
 		/>
 		<div class="container">
 			<div class="preview__content">
-				<h1 class="preview__title">
-					<span class="preview__title-word preview__title-word--blue"
-						>Lorem ipsum</span
-					>
-					dolor sit <br> amet consectetur
-					<span class="preview__title-word preview__title-word--blue"
-						>adipiscing</span
-					>
+				<h1 class="preview__title heading heading--xl">
+					<span class="heading__highlight">LOREM IPSUM</span> DOLOR SIT<br />
+					<span class="heading__highlight">AMET</span> CONSECTETUR
+					<span class="heading__highlight">ADIPISCING</span>
 				</h1>
 				<p class="preview__label">
 					At vero eos et accusamus et iusto odio dignissimos ducimus!
@@ -71,6 +67,7 @@ function handleMoreClick() {
 .preview {
 	position: relative;
 	min-height: 850px;
+	margin-bottom: 120px;
 	overflow: hidden;
 
 	&__image {
@@ -99,23 +96,9 @@ function handleMoreClick() {
 
 	&__title {
 		margin: 0 0 80px;
-		font-weight: 700;
-		font-size: 48px;
-		text-transform: uppercase;
-
-		&-word {
-			&--blue {
-				color: #3e9cdc;
-			}
-		}
 
 		@include media-tablet {
-			font-size: 32px;
 			text-align: center;
-		}
-
-		@include media-mobile {
-			font-size: 32px;
 		}
 	}
 

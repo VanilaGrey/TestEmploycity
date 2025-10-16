@@ -1,76 +1,154 @@
+<template>
+	<section class="order-form container">
+		<form @submit.prevent="onSubmit" class="order-form__form">
+			<!-- Сетка из первых 3 полей -->
+			<FormField
+				v-for="field in orderFields"
+				:key="field.name"
+				:field="field"
+				v-model="formData[field.name]"
+			/>
 
-<!-- <template>
-  <section class="order-form">
-    <form @submit.prevent="onSubmit">
-      <div class="order-form__group">
-        <select name="topic" required>
-          <option value="">Выберите тему</option>
-          <option value="design">Дизайн</option>
-          <option value="dev">Разработка</option>
-        </select>
+			<!-- Остальные поля (range, file и т.п.) -->
+			<div class="order-form__group">
+				<div class="order-form__range-header">
+					<span class="order-form__range-title"
+						>Sed ut perspiciatis, unde omnis iste</span
+					>
+					<span class="order-form__range-value">{{ formData.progress }}%</span>
+				</div>
 
-        <input type="email" name="email" placeholder="Ваш email" required />
-        <input type="text" name="name" placeholder="Ваше имя" required />
+				<FormField
+					v-for="field in orderRange"
+					:key="field.name"
+					:field="field"
+					v-model="formData[field.name]"
+				/>
+			</div>
+			<FormField
+				v-for="field in orderImage"
+				:key="field.name"
+				:field="field"
+				v-model="formData[field.name]"
+				@file-change="handleFileChange"
+			/>
 
-        <input type="range" name="progress" />
-
-        <label class="order-form__file">
-          <input type="file" name="attachment" />
-          <span>Прикрепить файл</span>
-        </label>
-
-        <button type="submit" class="btn btn--primary">Отправить</button>
-      </div>
-    </form>
-  </section>
+			<!-- Кнопка отправки -->
+			<BaseButton
+				backgroundColor="#3e9cdc"
+				color="#ffffff"
+				type="submit"
+				customClass="order-form__button"
+			>
+				Заказать
+			</BaseButton>
+		</form>
+	</section>
 </template>
 
 <script setup>
+import { reactive } from 'vue';
+import FormField from './FormField.vue';
+import BaseButton from '@/components/BaseButton.vue';
+
+// Поля формы
+const fields = [
+	{
+		type: 'select',
+		name: 'topic',
+		placeholder: 'Выберите тип системы',
+		required: true,
+		options: [
+			{ value: 'design', text: 'Sed ut perspiciatis' },
+			{ value: 'dev1', text: 'Nemo enim ipsam' },
+			{ value: 'dev2', text: 'Et harum quidem' },
+			{ value: 'dev3', text: 'Temporibus autem' },
+			{ value: 'dev4', text: 'Itaque earum rerum' },
+		],
+	},
+	{ name: 'email', type: 'email', placeholder: 'Ваш email', required: true },
+	{ name: 'name', type: 'text', placeholder: 'Ваше имя', required: true },
+	{ name: 'progress', type: 'range', min: 0, max: 100, default: 75 },
+	{ name: 'attachment', type: 'file', placeholder: 'Прикрепить файл' },
+];
+
+// Разделение для layout
+const orderFields = fields.slice(0, 3);
+const orderRange = fields.slice(3, 4);
+const orderImage = fields.slice(4);
+// Автоматическое создание реактивных значений
+const formData = reactive({});
+fields.forEach((field) => {
+	formData[field.name] = field.default ?? (field.type === 'file' ? null : '');
+});
+
+// Обработка выбора файла
+function handleFileChange(event) {
+	const file = event.target.files[0];
+	formData.attachment = file;
+}
+
+// Обработка отправки формы
 function onSubmit() {
+	console.log('Отправка формы:', formData);
 	alert('Форма отправлена!');
 }
 </script>
 
 <style lang="scss" scoped>
 .order-form {
-	padding: 40px 20px;
-	background-color: #ffffff;
+	margin-bottom: 150px;
 
-	&__group {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
+	&__form {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 30px;
 
-		select,
-		input[type='text'],
-		input[type='email'] {
-			padding: 10px;
-			font-size: 14px;
-			border: 1px solid #cccccc;
-			border-radius: 4px;
-		}
-
-		input[type='range'] {
-			width: 100%;
-		}
-
-		&__file {
+		@include media-tablet {
 			display: flex;
-			align-items: center;
-			gap: 10px;
+			flex-direction: column;
+		}
 
-			input {
-				display: none;
-			}
-
-			span {
-				padding: 6px 10px;
-				color: #2a76dd;
-				border: 1px dashed #2a76dd;
-				border-radius: 4px;
-				cursor: pointer;
-			}
+		@include media-mobile {
+			display: flex;
+			flex-direction: column;
 		}
 	}
+
+	&__group {
+		align-self: end;
+		grid-column: span 2;
+
+		@include media-tablet {
+			align-self: auto;
+		}
+
+		@include media-mobile {
+			align-self: auto;
+		}
+	}
+
+	&__button {
+		grid-column: 2 / 3;
+	}
+
+	&__range-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 8px;
+	}
+
+	&__range-title {
+		font-weight: 400;
+		font-size: 18px;
+		color: #ffffff;
+	}
+
+	&__range-value {
+		font-weight: 600;
+		font-size: 18px;
+		color: rgba(255, 255, 255, 0.85);
+	}
 }
-</style> -->
+</style>

@@ -1,10 +1,10 @@
 <template>
-	<component :is="tag" class="icon-text" :style="buttonStyles" v-bind="$attrs">
+	<IconButton :is="tag" class="icon-text" :style="buttonStyles" v-bind="$attrs">
 		<span class="icon-text__icon" aria-hidden="true"></span>
 		<span v-if="$slots.default" class="icon-text__text">
 			<slot />
 		</span>
-	</component>
+	</IconButton>
 </template>
 
 <script setup>
