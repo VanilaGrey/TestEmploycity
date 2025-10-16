@@ -15,11 +15,11 @@
 
 <script setup>
 const steps = [
-	{ icon: "search", text: "Lorem ipsum dolor sit amet" },
-	{ icon: "percent", text: "Consectetur adipiscing elit" },
-	{ icon: "file", text: "Sed do eiusmod tempor" },
-	{ icon: "message", text: "Esse cillum dolore eu fugiat" },
-	{ icon: "money", text: "Excepteur sint occaecat cupidatat non proident" },
+	{ icon: 'search', text: 'Lorem ipsum dolor sit amet' },
+	{ icon: 'percent', text: 'Consectetur adipiscing elit' },
+	{ icon: 'file', text: 'Sed do eiusmod tempor' },
+	{ icon: 'message', text: 'Esse cillum dolore eu fugiat' },
+	{ icon: 'money', text: 'Excepteur sint occaecat cupidatat non proident' },
 ];
 </script>
 
